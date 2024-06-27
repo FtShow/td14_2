@@ -7,6 +7,7 @@ import { Delete } from '@mui/icons-material';
 import {Task} from './Task'
 import {TaskStatuses, TaskType} from './api/todolists-api'
 import {FilterValuesType} from './state/todolists-reducer'
+import {useAppDispatch} from "./state/store";
 
 type PropsType = {
     id: string
@@ -25,6 +26,7 @@ type PropsType = {
 
 export const Todolist = React.memo(function (props: PropsType) {
     console.log('Todolist called')
+    const dispatch = useAppDispatch();
 
     const addTask = useCallback((title: string) => {
         props.addTask(title, props.id)
