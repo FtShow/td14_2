@@ -20,7 +20,7 @@ import {
     TodolistDomainType
 } from './state/todolists-reducer'
 import {
-    addTaskAC,
+    addTaskAC, changeStatusTaskTC,
     changeTaskStatusAC,
     changeTaskTitleAC,
     createTaskTC,
@@ -49,13 +49,11 @@ function App() {
     }, []);
 
     const addTask = useCallback(function (title: string, todolistId: string) {
-        const action = addTaskAC(title, todolistId);
         dispatch(createTaskTC(todolistId, title));
     }, []);
 
     const changeStatus = useCallback(function (id: string, status: TaskStatuses, todolistId: string) {
-        const action = changeTaskStatusAC(id, status, todolistId);
-        dispatch(action);
+                dispatch(changeStatusTaskTC(id, todolistId, status));
     }, []);
 
     const changeTaskTitle = useCallback(function (id: string, newTitle: string, todolistId: string) {
