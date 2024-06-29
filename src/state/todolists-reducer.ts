@@ -1,4 +1,4 @@
-import {v1} from 'uuid';
+
 import {todolistsAPI, TodolistType} from '../api/todolists-api'
 import {Dispatch} from "redux";
 import {AppRootStateType} from "./store";
@@ -86,7 +86,7 @@ export const removeTodolistAC = (todolistId: string): RemoveTodolistActionType =
     return {type: 'REMOVE-TODOLIST', id: todolistId}
 }
 export const addTodolistAC = (title: string): AddTodolistActionType => {
-    return {type: 'ADD-TODOLIST', title: title, todolistId: v1()}
+    return {type: 'ADD-TODOLIST', title: title, todolistId: crypto.randomUUID()}
 }
 export const changeTodolistTitleAC = (id: string, title: string): ChangeTodolistTitleActionType => {
     return {type: 'CHANGE-TODOLIST-TITLE', id: id, title: title}
@@ -107,3 +107,10 @@ export const getTodosTC = () => {
     }
 }
 
+export const fetchTodolistsThunk = (dispatch: Dispatch)=>{
+    todolistsAPI.getTodolists()
+        .then(res=>{
+            dispatch(setTodosAC(res.data))
+        })
+
+}
