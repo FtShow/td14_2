@@ -122,3 +122,11 @@ export const createTodolistTC = (title: string) =>(dispatch: Dispatch)=>{
             dispatch(addTodolistAC(title))
         })
 }
+
+export const changeTodolistTitleTC = (id: string, title: string) =>(dispatch: Dispatch)=>{
+    todolistsAPI.updateTodolist(id, title)
+        .then(res=>{
+            console.log(res)
+            dispatch(changeTodolistTitleAC(id, title))
+        })
+}
