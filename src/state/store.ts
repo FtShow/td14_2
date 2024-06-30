@@ -7,8 +7,8 @@ import {useDispatch} from "react-redux";
 // объединяя reducer-ы с помощью combineReducers,
 // мы задаём структуру нашего единственного объекта-состояния
 const rootReducer = combineReducers({
-        tasks: tasksReducer,
-        todolists: todolistsReducer
+    todolists: todolistsReducer,
+    tasks: tasksReducer
     }
 )
 

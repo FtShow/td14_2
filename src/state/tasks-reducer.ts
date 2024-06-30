@@ -153,9 +153,14 @@ export const setTasksAC = (todolistId: string, tasks: Array<TaskType>)=>{
     } as const
 }
 export const fetchTasksTC = (todolistId: string) => (dispatch: Dispatch) => {
+
     todolistsAPI.getTasks(todolistId).then(res => {
         const tasks = res.data.items
-        dispatch(setTasksAC(todolistId, tasks))
+
+            dispatch(setTasksAC(todolistId, tasks))
+
+
+
     })
 }
 
